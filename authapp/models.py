@@ -18,7 +18,7 @@ MARITAL_STATUS = (
 
 class MyUser(AbstractUser):
     patronymic = models.CharField(max_length=30, verbose_name='Отчество', blank=True)
-    birthday = models.DateField(verbose_name='Дата рождения', blank=True)
+    birthday = models.DateField(verbose_name='Дата рождения', blank=True, null=True)
     phone1 = models.CharField(max_length=15, verbose_name='Телефон (осн.)', blank=True)
     phone2 = models.CharField(max_length=15, verbose_name='Телефон (доп.)', blank=True)
     skype = models.CharField(max_length=15, verbose_name='Skype', blank=True)
