@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+    {% include 'rezumeapp/includes/inc_short_author.html' %}
+    <div class="certificate_main">
+        {% for certificate in certificate_list %}
+            <div class="certificate_block">
+               <div class="certificate_main_block"><img src="{{ certificate.image.url }}" alt="" class="img_certificate">
+                <h2 class="edu-text">{{ certificate.name }}</h2></div>
+                <div class="certificate_hover_block">
+                    <h2 class="edu-text">{{ certificate.name_institute }}</h2>
+                    <h2 class="edu-text">С Е Р Т И Ф И К А Т</h2>
+                    <h3 class="edu-text">{{ certificate.description }}</h3>
+                    <h3 class="edu-text">{{ certificate.date_end|date:"j.m.Y" }}</h3>
+                    <a href="{{ certificate.image.url }}" target="_blank">Открыть</a>
+                    <a href="{{ certificate.file.url }}">Скачать</a>
+                </div>
+            </div>
+        {% empty %}
+            <div class="certificate_block">
+                <h2>Сертификаты отсутствуют.</h2>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

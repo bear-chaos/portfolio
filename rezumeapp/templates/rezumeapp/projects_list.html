@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+    {% include 'rezumeapp/includes/inc_short_author.html' %}
+        <div class="projects">
+            {% for project in projects_list %}
+                <div class="projects-block">
+                        <a href="{% url 'rezume:project_info' project.pk %}" class="project-img-preview"><img src="{{ project.img_preview.url }}" alt=""></a>
+                    <div class="projects-text">
+                        <h2><a href="{% url 'rezume:project_info' project.pk %}">{{ project.name }}</a></h2>
+                        <h3><span class="edu-text">{{ project.description|truncatechars:100 }} <a href="{% url 'rezume:project_info' project.pk %}">&#160;&#160;&#62;&#62;</a></span> </h3>
+                        {% if project.date_end %}
+                            <p class="text-green">Закончен {{ project.date_end|date:"j.m.Y" }}</p>
+                        {% else %}
+                            <p class="edu-text">В работе</p>
+                        {% endif %}
+                        <div class="skills">
+                            {% for skill in project.skills.all %}
+                                <a href="{% url 'rezume:projects_list' skill.slug %}">{{ skill.name }}</a>
+                            {% endfor %}
+                            {% for podskill in project.podskills.all %}
+                                <a href="{% url 'rezume:projects_list' podskill.slug %}">{{ podskill.name }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="projects-block">
+                    <div class="projects-text">
+                        <h2 class="edu-text text-center">Проекты не найдены.</h2>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+{% endblock %}

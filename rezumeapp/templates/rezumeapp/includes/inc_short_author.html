@@ -1,0 +1,9 @@
+{% load staticfiles %}
+<div class="short-author">
+    <div class="circle-img">
+        <img class="avatar" src="{{ user_info.avatar.url }}" alt="Аватар">
+    </div>
+    <h2>{{ user_info.fi }}</h2>
+    <p>Сот.тел.: {{ user_info.phone1 }}</p>
+    <p>Email: {{ user_info.email }}</p>
+</div>

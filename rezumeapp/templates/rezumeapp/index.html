@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <div class="author">
+        <div class="hover"><img class="hover_avatar" src="{{ user_info.avatar.url }}" alt="">
+            <div class="hover-text">
+                <h2>Добрый день!<br>Я&nbsp;рад приветствовать Вас на&nbsp;моем сайте.</h2>
+                <p>Меня зовут Артур и&nbsp;я&nbsp;веб разработчик на&nbsp;Python3 + Django.</p>
+                <p>За&nbsp;плечами имею небольшой опыт работы, но&nbsp;рассчитываю, что в&nbsp;ближайщем будущем ситуация улучшится. Я&nbsp;программировал на&nbsp;разных языках (java, C++, C#), но&nbsp;python увлек меня больше всех. Я&nbsp;неплохо знаком с&nbsp;реляционными базами данных. Знаком с&nbsp;графическими и&nbsp;видео-редакторами. А&nbsp;также обладаю некоторыми другими скрытыми способностями которые вы&nbsp;можете увидеть на&nbsp;странице &laquo;<a href="{% url 'rezume:skills' %}">Навыки</a>&raquo;.</p>
+                <p>Я&nbsp;постоянно расширяю свои знания посредством специализированных курсов и&nbsp;чтением различной профессиональной литературы. Мне интересно программирование и&nbsp;интересно работать с&nbsp;различными данными. Каким&nbsp;бы не&nbsp;был трудным проект, начатую работу, я&nbsp;всегда доведу до&nbsp;конца.</p>
+                <p>Для продолжения общения, Вы&nbsp;можете связаться со&nbsp;мной по&nbsp;контактам представленными на&nbsp;странице.</p>
+                <h2>Удачного Вам дня!</h2>
+            </div>
+        </div>
+        <div class="block-info">
+            <div class="text-info">
+                <h2>{{ user_info.fi }}</h2>
+                <h3>{{ user_info.post }}</h3>
+                <p>
+                    {% if user_info.sity %}
+                        г.{{ user_info.sity }}
+                    {% endif %}
+                    {% if user_info.birthday %}
+                        &#160;&#160;&#160;{{ user_info.age }} лет
+                    {% endif %}
+                    {% if user_info.marital_status %}
+                        &#160;&#160;&#160;{{ user_info.get_marital_status }}
+                    {% endif %}
+                </p>
+            </div>
+            <div class="contacts-info">
+                <p>Контакты:</p>
+                <div class="contacts-block">
+                    <div class="contacts"> <img src="/static/img/contacts_icon/call.png" alt="">&#160;&#160;{{ user_info.phone1 }}</div>
+                    {% if user_info.phone2 %}
+                        <div class="contacts"> <img src="/static/img/contacts_icon/call.png" alt="">&#160;&#160;{{ user_info.phone2 }}</div>
+                    {% endif %}
+                    <div class="contacts"> <img src="/static/img/contacts_icon/gmail.png" alt="">&#160;&#160;{{ user_info.email }}</div>
+                    {% if user_info.telegram %}
+                        <div class="contacts"> <img src="/static/img/contacts_icon/telegram.png" alt="">&#160;&#160;telegramm </div>
+                    {% endif %}
+                    {% if user_info.skype %}
+                        <div class="contacts"> <img src="/static/img/contacts_icon/skype.png" alt="">&#160;&#160;archi-07-1 </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block js %}
+    <script type="text/javascript">
+        function showHide(element_id) {
+            if (document.getElementById(element_id)) {
+                var mass_id = [
+                    {% for skills in skills_list %}
+                        "{{ skills.slug }}",
+                    {% endfor %}
+                ];
+                for (var i = 0; i < mass_id.length; i++) {
+                   if (document.getElementById(mass_id[i]))
+                       document.getElementById(mass_id[i]).style.display = "none";
+                }
+                document.getElementById(element_id).style.display = "block";
+{#                document.getElementById(element_id).style.color = "#faebd7";#}
+            }
+            else allert("Элемент с id <" + element_id + "> не найден.");
+        }
+    </script>
+{% endblock %}
+
+{% block content %}
+    {% include 'rezumeapp/includes/inc_short_author.html' %}
+    <div class="skills">
+        <div class="skills-block">
+            <div class="list-skills">
+                <ul>
+                    {% for skills in skills_list %}
+                        <li><a href="javascript:void(0)" onclick="showHide('{{ skills.slug }}')">{{ skills.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% for skills in skills_list %}
+                <div class="description-skills" id="{{ skills.slug }}" {% if forloop.counter0 == 0 %}style="display: block;"{% endif %}>
+                    <div class="text-skills">
+                        {% for p_skills in podskills_list %}
+                            {% if p_skills.skills.pk == skills.pk %}
+                                <p><a href="{% url 'rezume:projects_list' p_skills.slug %}">{{ p_skills.name }}</a>
+                                    {% if p_skills.get_len_podpodskills > 0 %}
+                                        <span class="text-podskills"> (
+                                            {% for pp_skills in p_skills.get_podpodskills %}
+                                                <a href="{% url 'rezume:projects_list' pp_skills.slug %}">{{ pp_skills.name }}</a>
+                                                {% if not forloop.last %}
+                                                    ,
+                                                {% endif %}
+                                            {% endfor %}
+                                        )
+                                        </span>
+                                    {% endif %}
+                                </p>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

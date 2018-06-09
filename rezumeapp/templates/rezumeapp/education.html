@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+    {% include 'rezumeapp/includes/inc_short_author.html' %}
+    <div class="education">
+        {% for education in education_list %}
+            <div class="education-block">
+                <div class="years">
+                    {{ education.date_begin|date:"Y" }}-{{ education.date_end|date:"Y" }}
+                    <br>
+                    {{ education.get_type_ed }}
+                </div>
+                <div class="education-text">
+                    <h2>{{ education.name_institute }}</h2>
+                    <h3><span class="edu-text">Факультет:</span> {{ education.department }}</h3>
+                    <h3><span class="edu-text">Специальность:</span> {{ education.specialty }}</h3>
+                    <h3><span class="edu-text">Должность:</span> {{ education.post }}</h3>
+                </div>
+                {% if education.image %}
+                    <div class="sertificate">
+                        <a href="img/sertificate_000.jpg" target="_blank"><img src="img/sertificate_000.jpg" alt=""></a>
+                    </div>
+                {% endif %}
+            </div>
+        {% empty %}
+            <div class="education-block">
+                <div class="education-text"><h3><span class="edu-text">Отсутствуют данные об образовании.</span></h3></div>
+            </div>
+        {% endfor %}
+{#        <div class="education-block">#}
+{#            <div class="years">2007-2012</div>#}
+{#            <div class="education-text">#}
+{#                <h2>Иркутский государственный технический университет</h2>#}
+{#                <h3><span class="edu-text">Факультет:</span> Кибернетики</h3>#}
+{#                <h3><span class="edu-text">Специальность:</span> Автоматизированная обработка и управление информацией</h3>#}
+{#                <h3><span class="edu-text">Должность:</span> Инженер-программист</h3>#}
+{#            </div>#}
+{#<!--                        <a href="img/sertificate_000.jpg" target="_blank">-->#}
+{#<!--                            <img src="img/sertificate_000.jpg" alt="">-->#}
+{#<!--                        </a>-->#}
+{#            <div class="sertificate">#}
+{#                <a href="img/sertificate_000.jpg" target="_blank"><img src="img/sertificate_000.jpg" alt=""></a>#}
+{#            </div>#}
+{#        </div>#}
+
+    </div>
+{% endblock %}

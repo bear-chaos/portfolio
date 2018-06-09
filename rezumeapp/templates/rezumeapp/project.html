@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block js %}
+    <script type="text/javascript">
+        function showHide(element_id) {
+            if (document.getElementById(element_id)) {
+                var mass_id = ["img1", "img2", "img3", "img4"]
+                for (var i = 0; i < mass_id.length; i++) {
+                   if (document.getElementById(mass_id[i]))
+                       document.getElementById(mass_id[i]).style.display = "none";
+                }
+                document.getElementById(element_id).style.display = "block";
+            }
+            else allert("Дружище! Ты требуешь от меня невозможного! Я не знаю такую картинку!");
+        }
+    </script>
+{% endblock %}
+
+{% block content %}
+    {% include 'rezumeapp/includes/inc_short_author.html' %}
+    <div class="project">
+        <div class="project-name"><h2>{{ project_info.name }}</h2></div>
+        {% if project_info.img_1 %}
+            <div class="project-block-img">
+                <a href="{{ project_info.img_1.url }}" class="img-main" target="_blank" id="img1"><img src="{{ project_info.img_1.url }}" alt=""></a>
+                <a href="{{ project_info.img_2.url }}" class="img-main" target="_blank" id="img2" style="display: none;"><img src="{{ project_info.img_2.url }}" alt=""></a>
+                <a href="{{ project_info.img_3.url }}" class="img-main" target="_blank" id="img3" style="display: none;"><img src="{{ project_info.img_3.url }}" alt=""></a>
+                <a href="{{ project_info.img_4.url }}" class="img-main" target="_blank" id="img4" style="display: none;"><img src="{{ project_info.img_4.url }}" alt=""></a>
+                <div class="img-previos">
+                    <a href="javascript:void(0)" onclick="showHide('img1')" class="img-prev"><img src="{{ project_info.img_1.url }}" alt=""></a>
+                    <a href="javascript:void(0)" onclick="showHide('img2')" class="img-prev"><img src="{{ project_info.img_2.url }}" alt=""></a>
+                    <a href="javascript:void(0)" onclick="showHide('img3')" class="img-prev"><img src="{{ project_info.img_3.url }}" alt=""></a>
+                    <a href="javascript:void(0)" onclick="showHide('img4')" class="img-prev"><img src="{{ project_info.img_4.url }}" alt=""></a>
+                </div>
+            </div>
+        {% else %}
+            <div class="project-block-img"><p>Изображения к работе осутствуют</p></div>
+        {% endif %}
+        <div class="project-desc">
+            <p>{{ project_info.description }}</p>
+        </div>
+        <div class="project-info">
+            {% if project_info.date_end %}
+                <div class="project-close" style="color: #00ff00;">Завершен: {{ project_info.date_end|date:"j.m.Y" }}</div>
+            {% else %}
+                <div class="project-close">В работе</div>
+            {% endif %}
+            {% if project_info.link %}
+                <div class="project-link">
+                    <a href="{{ project_info.link }}">Перейти на страницу</a>
+                </div>
+            {% endif %}
+            {% if project_info.file %}
+                <div class="project-download">
+                    <a href="{{ project_info.file.url }}">Скачать файл</a>
+                </div>
+            {% endif %}
+        </div>
+        <div class="project-skills">
+            {% for skill in project_info.skills.all %}
+                <a href="{% url 'rezume:projects_list' skill.slug %}">{{ skill.name }}</a>
+            {% endfor %}
+            {% for podskill in project_info.podskills.all %}
+                <a href="{% url 'rezume:projects_list' podskill.slug %}">{{ podskill.name }}</a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
