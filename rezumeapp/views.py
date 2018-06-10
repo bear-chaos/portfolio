@@ -4,7 +4,7 @@ from .models import Education, Certificates, Skills, PodSkills, PodPodSkills, Pr
 # Create your views here.
 
 
-def page_404(request):
+def page_404(request, exception):
     user_info = MyUser.objects.get(username='bear_chaos')
     context = {
         'user_info': user_info
