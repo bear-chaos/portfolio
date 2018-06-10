@@ -5,12 +5,18 @@ from .models import Education, Certificates, Skills, PodSkills, PodPodSkills, Pr
 
 
 def page_404(request):
-    context = {}
+    user_info = MyUser.objects.get(username='bear_chaos')
+    context = {
+        'user_info': user_info
+    }
     return render(request, '404.html', context, status=404)
 
 
 def page_500(request):
-    context = {}
+    user_info = MyUser.objects.get(username='bear_chaos')
+    context = {
+        'user_info': user_info
+    }
     return render(request, '500.html', context, status=500)
 
 
