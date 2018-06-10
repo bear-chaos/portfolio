@@ -1,7 +1,5 @@
-# from django.conf.urls import handler404
-# from django.conf.urls import handler404
 from django.urls import path
-from .views import index, education, certificates, skills, my_projects, project_info, page_404
+from .views import index, education, certificates, skills, my_projects, project_info
 
 app_name = 'rezumeapp'
 
@@ -14,6 +12,3 @@ urlpatterns = [
     path('projects/<int:pk>/', project_info, name='project_info'),
     path('projects/<skill>/', my_projects, name='projects_list'),
 ]
-
-# handler404 = 'rezumeapp.views.page_404'
-handler404 = page_404

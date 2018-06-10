@@ -4,8 +4,8 @@
     <div class="page-not-found-main">
         <div class="text-info">
             <h2 class="edu-text"><span class="text-red">404 Вот так герои и погибают</span></h2> </div>
-        <div class="img-info"> <img src="static/img/for_page_errors/xalk5.gif" alt=""> </div>
+        <div class="img-info"> <img src="{% static 'img/for_page_errors/xalk5.gif' %}" alt=""> </div>
         <div class="text-info">
-            <h2>Такой страницы не существует. Вернитесь пожалуста на <a href="#">главную</a>.</h2> </div>
+            <h2>Такой страницы не существует. Вернитесь пожалуста на <a href="{% url 'rezume:index' %}">главную</a>.</h2> </div>
     </div>
 {% endblock %}

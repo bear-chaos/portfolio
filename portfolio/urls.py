@@ -25,3 +25,8 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = 'rezumeapp.views.page_404'
+handler500 = 'rezumeapp.views.page_500'
+# handler404 = 'rezumeapp.views.p_404'
+# handler500 = 'rezumeapp.views.p_500'

@@ -1,19 +1,17 @@
 from django.shortcuts import render, render_to_response, get_object_or_404
 from authapp.models import MyUser
-from django.template.context import RequestContext
 from .models import Education, Certificates, Skills, PodSkills, PodPodSkills, Projects
 # Create your views here.
 
 
-def page_404(request, exception, template_name='404.html'):
-    print('page404 start')
-    context = RequestContext(request)
-    print('page404 - 1')
-    response = render_to_response('rezumeapp/page404.html', context)  # , context_instance=RequestContext(request))
-    print('page404 - 2')
-    response.status_code = 404
-    print('page404 - 3')
-    return response
+def page_404(request):
+    context = {}
+    return render(request, '404.html', context, status=404)
+
+
+def page_500(request):
+    context = {}
+    return render(request, '500.html', context, status=500)
 
 
 # главная
@@ -88,7 +86,6 @@ def my_projects(request, skill='all'):
 # проект
 def project_info(request, pk):
     user_info = MyUser.objects.get(username='bear_chaos')
-    # project = Projects.objects.get(pk=pk)
     project = get_object_or_404(Projects, pk=pk)
     context = {
         'user_info': user_info,
