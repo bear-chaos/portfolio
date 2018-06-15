@@ -75,7 +75,6 @@ a {
   top: 0;
   bottom: 0;
   opacity: 0;
-  filter: alpha(opacity=0);
   transition-duration: 1s;
   transform: scaleX(-1);
   animation-timing-function: ease-in;
@@ -85,14 +84,12 @@ a {
 }
 .footer-main .footer .sociallink .sl-send:hover .first {
   opacity: 0;
-  filter: alpha(opacity=0);
   transition-duration: 1s;
   transform: scaleX(-1);
   animation-timing-function: ease-in;
 }
 .footer-main .footer .sociallink .sl-send:hover .second {
   opacity: 1;
-  filter: alpha(opacity=100);
   transition-duration: 1s;
   transform: scaleX(1);
   animation-timing-function: ease-in;
@@ -560,7 +557,8 @@ a {
   margin: 10px 10px 10px 30px;
   padding: 10px;
   display: flex;
-  justify-content: left;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 .content-main .project .project-skills a {
   display: block;
