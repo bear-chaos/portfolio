@@ -1,0 +1,10 @@
+User-agent: Yandex
+Disallow: /admin
+Host: www.marsarthur.pythonanywhere.com
+
+User-agent: Googlebot
+User-agent: Yandex
+Disallow: /admin
+
+User-agent: *
+Disallow: /admin
