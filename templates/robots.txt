@@ -6,5 +6,17 @@ User-agent: Googlebot
 User-agent: Yandex
 Disallow: /admin
 
+User-agent: YandexImages
+Disallow: /
+
+User-agent: googlebot-image
+Disallow: /
+
+User-agent: psbot
+Disallow: /
+
+User-agent: yahoo-mmcrawler
+Disallow: /
+
 User-agent: *
 Disallow: /admin

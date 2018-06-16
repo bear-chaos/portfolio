@@ -55,6 +55,10 @@ a {
   color: #faebd7;
   font-size: 18px;
   overflow: hidden;
+  -webkit-transition: all 1s linear;
+  -moz-transition: all 1s linear;
+  -o-transition: all 1s linear;
+  -ms-transition: all 1s linear;
   transition: all 1s linear;
   position: relative;
 }
@@ -64,7 +68,15 @@ a {
   margin-right: 10px;
 }
 .footer-main .footer .sociallink .sl-send .first {
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  -ms-transition-duration: 1s;
   transition-duration: 1s;
+  -webkit-transform: scaleX(1);
+  -moz-transform: scaleX(1);
+  -o-transform: scaleX(1);
+  -ms-transform: scaleX(1);
   transform: scaleX(1);
   animation-timing-function: ease-in;
 }
@@ -75,8 +87,19 @@ a {
   top: 0;
   bottom: 0;
   opacity: 0;
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  -ms-transition-duration: 1s;
   transition-duration: 1s;
+  -webkit-transform: scaleX(-1);
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -ms-transform: scaleX(-1);
   transform: scaleX(-1);
+  -webkit-animation-timing-function: ease-in;
+  -moz-animation-timing-function: ease-in;
+  -o-animation-timing-function: ease-in;
   animation-timing-function: ease-in;
 }
 .footer-main .footer .sociallink .sl-send:hover {
