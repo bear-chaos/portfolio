@@ -31,10 +31,10 @@ a {
   min-width: 1200px;
   display: flex;
   justify-content: center;
+  background-color: #505050;
 }
 .footer-main .footer {
   width: 1200px;
-  background-color: #505050;
   display: flex;
   justify-content: space-between;
   padding: 20px;
