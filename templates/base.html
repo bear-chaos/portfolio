@@ -12,6 +12,7 @@
     <meta name="address" content="г.Иркутск">
 	<meta name="google-site-verification" content="v1fhL_6ZrnTzmT4VGrQ9iHvyPZaePkqynK0Drzx33Cs" />
     <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+    <link rel="chortcut icon" href="/static/img/favicon.ico" type="image/x-icon">
     {% block js %}
     {% endblock %}
 </head>
@@ -21,15 +22,16 @@
         <div class="content">
             <div class="header-main">
                 <div class="header">
-{#                    <div class="logo"></div>#}
+                    <div class="logo">
+                        <a href="{% url 'rezume:index' %}"><img src="/static/img/logo.png" alt=""></a>
+                    </div>
                     <div class="nav">
                         <ul>
                             <li><a href="{% url 'rezume:index' %}" {% if request.resolver_match.url_name == 'index' %} class="active-menu"{% endif %}>Обо мне</a></li>
                             <li><a href="{% url 'rezume:education' %}" {% if request.resolver_match.url_name == 'education' %} class="active-menu"{% endif %}>Образование</a></li>
-                            <li><a href="{% url 'rezume:certificates' %}" {% if request.resolver_match.url_name == 'certificates' %} class="active-menu"{% endif %}>Сертификаты</a></li>
+                            <li><a href="{% url 'rezume:certificates' 1 %}" {% if request.resolver_match.url_name == 'certificates' %} class="active-menu"{% endif %}>Сертификаты</a></li>
                             <li><a href="{% url 'rezume:skills' %}" {% if request.resolver_match.url_name == 'skills' %} class="active-menu"{% endif %}>Навыки</a></li>
-                            <li><a href="{% url 'rezume:projects_list' 'all' %}" {% if request.resolver_match.url_name == 'projects_list' or request.resolver_match.url_name == 'project_info' %} class="active-menu"{% endif %}>Проекты</a></li>
-{#                            <li><a href="#">Дополнительная информация</a></li>#}
+                            <li><a href="{% url 'rezume:projects_list' 1 'all' %}" {% if request.resolver_match.url_name == 'projects_list' or request.resolver_match.url_name == 'project_info' %} class="active-menu"{% endif %}>Проекты</a></li>
                         </ul>
                     </div>
                 </div>
@@ -40,20 +42,22 @@
             </div>
 
         </div>
-        <div class="footer-main">
-            <div class="footer">
-                <div class="copyright">&copy;&nbsp;2018-{% now "Y" %} Маршалко Артур. &nbsp;&nbsp;Разработка и создание сайтов.</div>
-                <div class="sociallink">
-                    <a href="mailto:eurek999@gmail.com" class="sl-send"><img src="/static/img/contacts_icon/mail_off.png" alt="" class="first"><img src="/static/img/contacts_icon/mail_on.png" alt="" class="second">Написать письмо</a>
-                    {% if user_info.telegram %}
-                        <a href="tg://resolve?domain=nikname" class="sl-send"><img src="/static/img/contacts_icon/telegramm_off.png" alt="" class="first"><img src="/static/img/contacts_icon/telegramm_on.png" alt="" class="second">Написать в telegram</a>
-                    {% endif %}
-                    {% if user_info.skype %}
-                        <a href="skype:{{ user_info.skype }}" class="sl-send"><img src="/static/img/contacts_icon/skype_off.png" alt="" class="first"><img src="/static/img/contacts_icon/skype_on.png" alt="" class="second">Написать в skype</a>
-                    {% endif %}
+        <footer>
+            <div class="footer-main">
+                <div class="footer">
+                    <div class="copyright">&copy;&nbsp;2018-{% now "Y" %} Маршалко Артур. &nbsp;&nbsp;Разработка и создание сайтов.</div>
+                    <div class="sociallink">
+                        <a href="mailto:eurek999@gmail.com" class="sl-send"><img src="/static/img/contacts_icon/mail_off.png" alt="" class="first"><img src="/static/img/contacts_icon/mail_on.png" alt="" class="second">Написать письмо</a>
+                        {% if user_info.telegram %}
+                            <a href="tg://resolve?domain=nikname" class="sl-send"><img src="/static/img/contacts_icon/telegramm_off.png" alt="" class="first"><img src="/static/img/contacts_icon/telegramm_on.png" alt="" class="second">Написать в telegram</a>
+                        {% endif %}
+                        {% if user_info.skype %}
+                            <a href="skype:{{ user_info.skype }}" class="sl-send"><img src="/static/img/contacts_icon/skype_off.png" alt="" class="first"><img src="/static/img/contacts_icon/skype_on.png" alt="" class="second">Написать в skype</a>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-        </div>
+        </footer>
     </div>
 </body>
 

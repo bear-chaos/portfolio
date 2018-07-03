@@ -26,27 +26,30 @@ a {
 .content {
   flex: 1;
 }
-.footer-main {
+footer {
+  background-color: #505050;
   height: 50px;
   min-width: 1200px;
+  line-height: 50px;
+}
+footer .footer-main {
   display: flex;
   justify-content: center;
-  background-color: #505050;
 }
-.footer-main .footer {
+footer .footer-main .footer {
   width: 1200px;
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 0 20px;
   align-items: center;
   color: #e79055;
 }
-.footer-main .footer .sociallink {
+footer .footer-main .footer .sociallink {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
-.footer-main .footer .sociallink .sl-send {
+footer .footer-main .footer .sociallink .sl-send {
   display: block;
   height: 38px;
   max-width: 37px;
@@ -62,12 +65,12 @@ a {
   transition: all 1s linear;
   position: relative;
 }
-.footer-main .footer .sociallink .sl-send img {
+footer .footer-main .footer .sociallink .sl-send img {
   width: 35px;
   vertical-align: middle;
   margin-right: 10px;
 }
-.footer-main .footer .sociallink .sl-send .first {
+footer .footer-main .footer .sociallink .sl-send .first {
   -webkit-transition-duration: 1s;
   -moz-transition-duration: 1s;
   -o-transition-duration: 1s;
@@ -83,7 +86,7 @@ a {
   -o-animation-timing-function: ease-in;
   animation-timing-function: ease-in;
 }
-.footer-main .footer .sociallink .sl-send .second {
+footer .footer-main .footer .sociallink .sl-send .second {
   margin: auto;
   position: absolute;
   left: 0;
@@ -105,10 +108,10 @@ a {
   -o-animation-timing-function: ease-in;
   animation-timing-function: ease-in;
 }
-.footer-main .footer .sociallink .sl-send:hover {
+footer .footer-main .footer .sociallink .sl-send:hover {
   max-width: 100%;
 }
-.footer-main .footer .sociallink .sl-send:hover .first {
+footer .footer-main .footer .sociallink .sl-send:hover .first {
   opacity: 0;
   -webkit-transition-duration: 1s;
   -moz-transition-duration: 1s;
@@ -125,7 +128,7 @@ a {
   -o-animation-timing-function: ease-in;
   animation-timing-function: ease-in;
 }
-.footer-main .footer .sociallink .sl-send:hover .second {
+footer .footer-main .footer .sociallink .sl-send:hover .second {
   opacity: 1;
   -webkit-transition-duration: 1s;
   -moz-transition-duration: 1s;
@@ -153,6 +156,59 @@ a {
 .header {
   display: flex;
   justify-content: center;
+}
+.header .logo a {
+  display: block;
+  width: 120px;
+  height: 100px;
+  text-align: center;
+}
+@keyframes rotation {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.header .logo a img {
+  padding: 15px 0;
+  vertical-align: middle;
+  animation-name: rotation;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+@keyframes rotationLogo {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(2880deg);
+  }
+}
+.header .logo a:hover img {
+  vertical-align: middle;
+  animation-name: rotationLogo;
+  animation-duration: 30s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
 }
 .header .nav ul {
   display: flex;
@@ -462,39 +518,39 @@ a {
 .content-main .projects {
   width: 950px;
 }
-.content-main .projects .projects-block {
+.content-main .projects .projects-main .projects-block {
   margin: 10px 10px 10px 30px;
   padding: 10px;
   display: flex;
   justify-content: space-between;
 }
-.content-main .projects .projects-block .project-img-preview {
+.content-main .projects .projects-main .projects-block .project-img-preview {
   display: block;
   height: 250px;
   border-radius: 25px;
   border: 2px solid transparent;
 }
-.content-main .projects .projects-block .project-img-preview img {
+.content-main .projects .projects-main .projects-block .project-img-preview img {
   width: 300px;
   object-fit: cover;
   height: 250px;
   object-position: top;
   border-radius: 25px;
 }
-.content-main .projects .projects-block .project-img-preview:hover {
+.content-main .projects .projects-main .projects-block .project-img-preview:hover {
   border: 2px solid #e6b063;
 }
-.content-main .projects .projects-block .projects-text {
+.content-main .projects .projects-main .projects-block .projects-text {
   width: 100%;
   padding-left: 25px;
 }
-.content-main .projects .projects-block .projects-text .skills {
+.content-main .projects .projects-main .projects-block .projects-text .skills {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
 }
-.content-main .projects .projects-block .projects-text .skills a {
+.content-main .projects .projects-main .projects-block .projects-text .skills a {
   display: block;
   margin: 10px;
   padding: 10px 20px;
@@ -503,36 +559,50 @@ a {
   border: 1px solid transparent;
   color: #e6b063;
 }
-.content-main .projects .projects-block .projects-text .skills a:hover {
+.content-main .projects .projects-main .projects-block .projects-text .skills a:hover {
   border: 1px solid #e6b063;
   color: #faebd7;
 }
-.content-main .projects .projects-block .projects-text h2,
-.content-main .projects .projects-block .projects-text h3,
-.content-main .projects .projects-block .projects-text a {
+.content-main .projects .projects-main .projects-block .projects-text h2,
+.content-main .projects .projects-main .projects-block .projects-text h3,
+.content-main .projects .projects-main .projects-block .projects-text a {
   color: #e6b063;
   margin-bottom: 15px;
 }
-.content-main .projects .projects-block .projects-text h2 {
+.content-main .projects .projects-main .projects-block .projects-text h2 {
   font-size: 25px;
 }
-.content-main .projects .projects-block .projects-text h3 {
+.content-main .projects .projects-main .projects-block .projects-text h3 {
   font-size: 20px;
 }
-.content-main .projects .projects-block .projects-text p {
+.content-main .projects .projects-main .projects-block .projects-text p {
   font-size: 15px;
   text-align: right;
 }
-.content-main .projects .projects-block .projects-text .edu-text {
+.content-main .projects .projects-main .projects-block .projects-text .edu-text {
   color: #faebd7;
   font-weight: 900;
 }
-.content-main .projects .projects-block .projects-text .text-green {
+.content-main .projects .projects-main .projects-block .projects-text .text-green {
   color: #00ff00;
   font-weight: 900;
 }
-.content-main .projects .projects-block .projects-text a:hover {
+.content-main .projects .projects-main .projects-block .projects-text a:hover {
   color: #faebd7;
+}
+.content-main .projects .pagination {
+  text-align: center;
+  font-size: 20px;
+  color: #e6b063;
+}
+.content-main .projects .pagination a {
+  color: #e6b063;
+}
+.content-main .projects .pagination a:hover {
+  color: #faebd7;
+}
+.content-main .projects .pagination .disabled-link {
+  opacity: 0.5;
 }
 .content-main .project {
   width: 950px;
@@ -698,13 +768,17 @@ a {
 .content-main .education .education-block .sertificate img:hover {
   border: 1px solid #e6b063;
 }
-.content-main .certificate_main {
+.content-main .certificate {
   width: 950px;
+  display: flex;
+  flex-direction: column;
+}
+.content-main .certificate .certificate_main {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
-.content-main .certificate_main .certificate_block {
+.content-main .certificate .certificate_main .certificate_block {
   width: 400px;
   height: 335px;
   margin: 10px 25px;
@@ -712,17 +786,17 @@ a {
   text-align: center;
   position: relative;
 }
-.content-main .certificate_main .certificate_block .certificate_main_block {
+.content-main .certificate .certificate_main .certificate_block .certificate_main_block {
   width: 400px;
   height: 335px;
 }
-.content-main .certificate_main .certificate_block .certificate_main_block .img_certificate {
+.content-main .certificate .certificate_main .certificate_block .certificate_main_block .img_certificate {
   width: 400px;
   object-fit: cover;
   height: 293px;
   object-position: top;
 }
-.content-main .certificate_main .certificate_block .certificate_hover_block {
+.content-main .certificate .certificate_main .certificate_block .certificate_hover_block {
   width: 370px;
   height: 305px;
   opacity: 0;
@@ -737,11 +811,11 @@ a {
   left: 0;
   padding: 30px 15px 0 15px;
 }
-.content-main .certificate_main .certificate_block .certificate_hover_block:hover {
+.content-main .certificate .certificate_main .certificate_block .certificate_hover_block:hover {
   opacity: 1;
   border: 1px solid #e6b063;
 }
-.content-main .certificate_main .certificate_block .certificate_hover_block:hover a {
+.content-main .certificate .certificate_main .certificate_block .certificate_hover_block:hover a {
   display: inline-block;
   border: 1px solid #faebd7;
   margin: 10px;
@@ -749,24 +823,38 @@ a {
   width: 100px;
   color: #e6b063;
 }
-.content-main .certificate_main .certificate_block .certificate_hover_block:hover a:hover {
+.content-main .certificate .certificate_main .certificate_block .certificate_hover_block:hover a:hover {
   border: 1px solid #e6b063;
   color: #faebd7;
 }
-.content-main .certificate_main .certificate_block h2,
-.content-main .certificate_main .certificate_block h3 {
+.content-main .certificate .certificate_main .certificate_block h2,
+.content-main .certificate .certificate_main .certificate_block h3 {
   color: #e6b063;
   margin-bottom: 15px;
 }
-.content-main .certificate_main .certificate_block h2 {
+.content-main .certificate .certificate_main .certificate_block h2 {
   font-size: 25px;
 }
-.content-main .certificate_main .certificate_block h3 {
+.content-main .certificate .certificate_main .certificate_block h3 {
   font-size: 15px;
 }
-.content-main .certificate_main .certificate_block .edu-text {
+.content-main .certificate .certificate_main .certificate_block .edu-text {
   color: #faebd7;
   font-weight: 900;
+}
+.content-main .certificate .pagination {
+  text-align: center;
+  font-size: 20px;
+  color: #e6b063;
+}
+.content-main .certificate .pagination a {
+  color: #e6b063;
+}
+.content-main .certificate .pagination a:hover {
+  color: #faebd7;
+}
+.content-main .certificate .pagination .disabled-link {
+  opacity: 0.5;
 }
 .main {
   display: flex;

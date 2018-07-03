@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% block content %}
     <div class="author">
-        <div class="hover"><img class="hover_avatar" src="{{ user_info.avatar.url }}" alt="">
+        <div class="hover"><img class="hover_avatar" src="{{ user_info.avatar.url }}" alt="Аватар">
             <div class="hover-text">
                 <h2>Добрый день!<br>Я&nbsp;рад приветствовать Вас на&nbsp;моем сайте.</h2>
                 <p>Меня зовут Артур и&nbsp;я&nbsp;веб разработчик на&nbsp;Python3 + Django.</p>
@@ -31,16 +31,16 @@
             <div class="contacts-info">
                 <p>Контакты:</p>
                 <div class="contacts-block">
-                    <div class="contacts"> <img src="/static/img/contacts_icon/call.png" alt="">&#160;&#160;{{ user_info.phone1 }}</div>
+                    <div class="contacts"> <img src="/static/img/contacts_icon/call.png" alt="Тел.осн.:">&#160;&#160;{{ user_info.phone1 }}</div>
                     {% if user_info.phone2 %}
-                        <div class="contacts"> <img src="/static/img/contacts_icon/call.png" alt="">&#160;&#160;{{ user_info.phone2 }}</div>
+                        <div class="contacts"> <img src="/static/img/contacts_icon/call.png" alt="Тел.доп.:">&#160;&#160;{{ user_info.phone2 }}</div>
                     {% endif %}
-                    <div class="contacts"> <img src="/static/img/contacts_icon/gmail.png" alt="">&#160;&#160;{{ user_info.email }}</div>
+                    <div class="contacts"> <img src="/static/img/contacts_icon/gmail.png" alt="Email:">&#160;&#160;{{ user_info.email }}</div>
                     {% if user_info.telegram %}
-                        <div class="contacts"> <img src="/static/img/contacts_icon/telegram.png" alt="">&#160;&#160;telegramm </div>
+                        <div class="contacts"> <img src="/static/img/contacts_icon/telegram.png" alt="Telegramm:">&#160;&#160;telegramm </div>
                     {% endif %}
                     {% if user_info.skype %}
-                        <div class="contacts"> <img src="/static/img/contacts_icon/skype.png" alt="">&#160;&#160;archi-07-1 </div>
+                        <div class="contacts"> <img src="/static/img/contacts_icon/skype.png" alt="Skype:">&#160;&#160;archi-07-1 </div>
                     {% endif %}
                 </div>
             </div>

@@ -3,33 +3,46 @@
 {% block content %}
     {% include 'rezumeapp/includes/inc_short_author.html' %}
         <div class="projects">
-            {% for project in projects_list %}
-                <div class="projects-block">
-                        <a href="{% url 'rezume:project_info' project.pk %}" class="project-img-preview"><img src="{{ project.img_preview.url }}" alt=""></a>
-                    <div class="projects-text">
-                        <h2><a href="{% url 'rezume:project_info' project.pk %}">{{ project.name }}</a></h2>
-                        <h3><span class="edu-text">{{ project.description|truncatechars:100 }} <a href="{% url 'rezume:project_info' project.pk %}">&#160;&#160;&#62;&#62;</a></span> </h3>
-                        {% if project.date_end %}
-                            <p class="text-green">Закончен {{ project.date_end|date:"j.m.Y" }}</p>
-                        {% else %}
-                            <p class="edu-text">В работе</p>
-                        {% endif %}
-                        <div class="skills">
-                            {% for skill in project.skills.all %}
-                                <a href="{% url 'rezume:projects_list' skill.slug %}">{{ skill.name }}</a>
-                            {% endfor %}
-                            {% for podskill in project.podskills.all %}
-                                <a href="{% url 'rezume:projects_list' podskill.slug %}">{{ podskill.name }}</a>
-                            {% endfor %}
+            <div class="projects-main">
+                {% for project in projects_list %}
+                    <div class="projects-block">
+                            <a href="{% url 'rezume:project_info' project.pk %}" class="project-img-preview"><img src="{{ project.img_preview.url }}" alt="{{ project.img_preview_descr }}"></a>
+                        <div class="projects-text">
+                            <h2><a href="{% url 'rezume:project_info' project.pk %}">{{ project.name }}</a></h2>
+                            <h3><span class="edu-text">{{ project.description|truncatechars:100 }} <a href="{% url 'rezume:project_info' project.pk %}">&#160;&#160;&#62;&#62;</a></span> </h3>
+                            {% if project.date_end %}
+                                <p class="text-green">Закончен {{ project.date_end|date:"j.m.Y" }}</p>
+                            {% else %}
+                                <p class="edu-text">В работе</p>
+                            {% endif %}
+                            <div class="skills">
+                                {% for skill in project.skills.all %}
+                                    <a href="{% url 'rezume:projects_list' 1 skill.slug %}">{{ skill.name }}</a>
+                                {% endfor %}
+                                {% for podskill in project.podskills.all %}
+                                    <a href="{% url 'rezume:projects_list' 1 podskill.slug %}">{{ podskill.name }}</a>
+                                {% endfor %}
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% empty %}
-                <div class="projects-block">
-                    <div class="projects-text">
-                        <h2 class="edu-text text-center">Проекты не найдены.</h2>
+                {% empty %}
+                    <div class="projects-block">
+                        <div class="projects-text">
+                            <h2 class="edu-text text-center">Проекты не найдены.</h2>
+                        </div>
                     </div>
+                {% endfor %}
+            </div>
+            {% if projects_list.paginator.num_pages > 1 %}
+                <div class="pagination">
+                    {% if projects_list.has_previous %}
+                        <a href="{% url 'rezume:projects_list' projects_list.previous_page_number projects_page_skill %}">&laquo;</a>
+                    {% endif %}
+                    {{ projects_list.number }} из {{ projects_list.paginator.num_pages }}
+                    {% if projects_list.has_next %}
+                        <a href="{% url 'rezume:projects_list' projects_list.next_page_number projects_page_skill %}">&raquo;</a>
+                    {% endif %}
                 </div>
-            {% endfor %}
+            {% endif %}
         </div>
 {% endblock %}

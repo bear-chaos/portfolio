@@ -22,15 +22,15 @@
         <div class="project-name"><h2>{{ project_info.name }}</h2></div>
         {% if project_info.img_1 %}
             <div class="project-block-img">
-                <a href="{{ project_info.img_1.url }}" class="img-main" target="_blank" id="img1"><img src="{{ project_info.img_1.url }}" alt=""></a>
-                <a href="{{ project_info.img_2.url }}" class="img-main" target="_blank" id="img2" style="display: none;"><img src="{{ project_info.img_2.url }}" alt=""></a>
-                <a href="{{ project_info.img_3.url }}" class="img-main" target="_blank" id="img3" style="display: none;"><img src="{{ project_info.img_3.url }}" alt=""></a>
-                <a href="{{ project_info.img_4.url }}" class="img-main" target="_blank" id="img4" style="display: none;"><img src="{{ project_info.img_4.url }}" alt=""></a>
+                <a href="{{ project_info.img_1.url }}" class="img-main" target="_blank" id="img1"><img src="{{ project_info.img_1.url }}" alt="{{ project_info.img_1_descr }}"></a>
+                <a href="{{ project_info.img_2.url }}" class="img-main" target="_blank" id="img2" style="display: none;"><img src="{{ project_info.img_2.url }}" alt="{{ project_info.img_2_descr }}"></a>
+                <a href="{{ project_info.img_3.url }}" class="img-main" target="_blank" id="img3" style="display: none;"><img src="{{ project_info.img_3.url }}" alt="{{ project_info.img_3_descr }}"></a>
+                <a href="{{ project_info.img_4.url }}" class="img-main" target="_blank" id="img4" style="display: none;"><img src="{{ project_info.img_4.url }}" alt="{{ project_info.img_4_descr }}"></a>
                 <div class="img-previos">
-                    <a href="javascript:void(0)" onclick="showHide('img1')" class="img-prev"><img src="{{ project_info.img_1.url }}" alt=""></a>
-                    <a href="javascript:void(0)" onclick="showHide('img2')" class="img-prev"><img src="{{ project_info.img_2.url }}" alt=""></a>
-                    <a href="javascript:void(0)" onclick="showHide('img3')" class="img-prev"><img src="{{ project_info.img_3.url }}" alt=""></a>
-                    <a href="javascript:void(0)" onclick="showHide('img4')" class="img-prev"><img src="{{ project_info.img_4.url }}" alt=""></a>
+                    <a href="javascript:void(0)" onclick="showHide('img1')" class="img-prev"><img src="{{ project_info.img_1.url }}" alt="{{ project_info.img_1_descr }}"></a>
+                    <a href="javascript:void(0)" onclick="showHide('img2')" class="img-prev"><img src="{{ project_info.img_2.url }}" alt="{{ project_info.img_2_descr }}"></a>
+                    <a href="javascript:void(0)" onclick="showHide('img3')" class="img-prev"><img src="{{ project_info.img_3.url }}" alt="{{ project_info.img_3_descr }}"></a>
+                    <a href="javascript:void(0)" onclick="showHide('img4')" class="img-prev"><img src="{{ project_info.img_4.url }}" alt="{{ project_info.img_4_descr }}"></a>
                 </div>
             </div>
         {% else %}
@@ -58,10 +58,10 @@
         </div>
         <div class="project-skills">
             {% for skill in project_info.skills.all %}
-                <a href="{% url 'rezume:projects_list' skill.slug %}">{{ skill.name }}</a>
+                <a href="{% url 'rezume:projects_list' 1 skill.slug %}">{{ skill.name }}</a>
             {% endfor %}
             {% for podskill in project_info.podskills.all %}
-                <a href="{% url 'rezume:projects_list' podskill.slug %}">{{ podskill.name }}</a>
+                <a href="{% url 'rezume:projects_list' 1 podskill.slug %}">{{ podskill.name }}</a>
             {% endfor %}
         </div>
     </div>
