@@ -6,3 +6,5 @@ settings.py
 media/
 __pycache__
 myvenv/
+rezumeapp/migrations/
+authapp/migrations/
