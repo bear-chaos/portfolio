@@ -37,11 +37,11 @@
                     <div class="text-skills">
                         {% for p_skills in podskills_list %}
                             {% if p_skills.skills.pk == skills.pk %}
-                                <p><a href="{% url 'rezume:projects_list' p_skills.slug %}">{{ p_skills.name }}</a>
+                                <p><a href="{% url 'rezume:projects_list' 1 p_skills.slug %}">{{ p_skills.name }}</a>
                                     {% if p_skills.get_len_podpodskills > 0 %}
                                         <span class="text-podskills"> (
                                             {% for pp_skills in p_skills.get_podpodskills %}
-                                                <a href="{% url 'rezume:projects_list' pp_skills.slug %}">{{ pp_skills.name }}</a>
+                                                <a href="{% url 'rezume:projects_list' 1 pp_skills.slug %}">{{ pp_skills.name }}</a>
                                                 {% if not forloop.last %}
                                                     ,
                                                 {% endif %}
