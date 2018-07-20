@@ -267,7 +267,7 @@ footer .footer-main .footer .sociallink .sl-send:hover .second {
   object-fit: cover;
   height: 470px;
   object-position: top;
-  border-radius: 25px 0 0 25px;
+  border-radius: 23px 0 0 23px;
 }
 .content-main .author .hover .hover-text {
   opacity: 0;
@@ -280,7 +280,7 @@ footer .footer-main .footer .sociallink .sl-send:hover .second {
   height: 450px;
   padding: 10px;
   background-color: rgba(127, 127, 127, 0.9);
-  border-radius: 25px 0 0 25px;
+  border-radius: 23px 0 0 23px;
   position: absolute;
   top: 0;
   left: 0;

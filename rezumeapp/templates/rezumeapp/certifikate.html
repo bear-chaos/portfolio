@@ -6,7 +6,7 @@
         <div class="certificate_main">
             {% for certificate in certificate_list %}
                 <div class="certificate_block">
-                   <div class="certificate_main_block"><img src="{{ certificate.image.url }}" alt="" class="img_certificate">
+                   <div class="certificate_main_block"><img src="{{ certificate.image.url }}" alt="{{ certificate.image_descr }}" class="img_certificate">
                     <h2 class="edu-text">{{ certificate.name }}</h2></div>
                     <div class="certificate_hover_block">
                         <h2 class="edu-text">{{ certificate.name_institute }}</h2>
